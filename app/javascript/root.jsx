@@ -1,6 +1,40 @@
 import React from 'react';
 import consumer from 'channels/consumer';
 
+import SetupScreen from 'screens/setup';
+import StageScreen from 'screens/stage';
+import BarScreen from 'screens/bar';
+import InfoScreen from 'screens/info';
+
+var viewComponents = {
+  'setup': SetupScreen,
+  'stage': StageScreen,
+  'bar': BarScreen,
+  'info': InfoScreen,
+};
+
+
+class DisplayStatus extends React.Component {
+  render() {
+    var connected = this.props.connected;
+    var display = this.props.display;
+
+    if (!connected) {
+      return <div id="setup"><h1>Connecting</h1></div>;
+    }
+
+    if (!display) {
+      return <div id="setup"><h1>Getting display details</h1></div>;
+    }
+
+    return (
+      <div id="setup">
+        <h1>This is display {display.display_id} ({display.name})</h1>
+      </div>
+    )
+  }
+}
+
 class Root extends React.Component {
   constructor(props) {
     super(props);
@@ -19,36 +53,45 @@ class Root extends React.Component {
         this.update();
       },
 
+      disconnected() {
+        component.setState({ connected: false });
+      },
+
       update() {
         this.perform('request_state');
       },
 
       received(data) {
-        console.log("New display details!");
+        console.log("New display details!", JSON.parse(data));
         component.setState({ display: JSON.parse(data) });
       }
     });
   }
 
-  render() {
-    if (!this.state.connected) {
-      return <div id="setup"><h1>Connecting</h1></div>;
-    }
-
+  renderContent() {
     if (!this.state.display) {
-      return <div id="setup"><h1>Getting display details</h1></div>;
+      return null;
     }
 
-    if (!this.state.display.name) {
-      return(
-        <div id="setup">
-          <h1>Display {this.state.display.display_id}</h1>
-          <p>This message will disappear once you set a name for the display, and a connection has been established with the control server.</p>
-        </div>
-      )
-    }
+    var mode = this.state.display.view_mode || 'setup';
+    var ViewComponent = viewComponents[mode] || SetupScreen;
 
-    return <h1>This is {this.state.display.name}</h1>;
+    return <ViewComponent display={this.state.display} connected={this.state.connected} />;
+  }
+
+  renderStatus() {
+    if (this.state.display && this.state.display.show_status) {
+      return <DisplayStatus display={this.state.display} connected={this.state.connected} />;
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderStatus()}
+        {this.renderContent()}
+      </div>
+    );
   }
 }
 

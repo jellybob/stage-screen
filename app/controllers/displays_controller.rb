@@ -14,7 +14,7 @@ class DisplaysController < ApplicationController
     @display.attributes = display_params
     @display.save!
 
-    redirect_to displays_path
+    redirect_to display
   rescue ActiveRecord::RecordInvalid
     render :edit
   end
@@ -22,6 +22,6 @@ class DisplaysController < ApplicationController
   private
 
   def display_params
-    params.require(:display).permit(:name)
+    params.require(:display).permit(:name, :show_status, :view_mode)
   end
 end

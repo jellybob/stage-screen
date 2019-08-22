@@ -1,7 +1,24 @@
 <h1>Display: <%= display.name %></h1>
 <%= form_for display do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :show_status %>
+    <%= f.check_box :show_status %>
+  </p>
+
+  <p>
+    <%= f.label :view_mode %>
+    <%= f.select :view_mode, options_for_select([
+      ["Setup", "setup"],
+      ["Stage", "stage"],
+      ["Info", "info"],
+      ["Bar", "bar"]
+    ], display.view_mode) %>
+  </p>
 
   <p><%= f.submit %></p>
 <% end %>
