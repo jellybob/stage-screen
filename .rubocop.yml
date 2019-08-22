@@ -1,0 +1,15 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - "bin/*"
+    - "node_modules/**/*"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Metrics/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
