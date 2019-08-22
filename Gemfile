@@ -20,10 +20,16 @@ gem "turbolinks", "~> 5"
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+group :development, :test do
+  gem "rspec"
+  gem "rspec-rails"
+end
+
 group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "rubocop"
   gem "rubocop-rails"
+  gem "rubocop-rspec"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
 end
