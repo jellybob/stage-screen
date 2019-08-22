@@ -1,29 +1,29 @@
 <h1>Display: <%= display.name %></h1>
 <%= form_for display do |f| %>
-  <p>
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :location %>
-    <%= f.text_field :location %>
-  </p>
+    <%= f.text_field :location, class: "form-control" %>
+  </div>
 
-  <p>
-    <%= f.label :show_status %>
-    <%= f.check_box :show_status %>
-  </p>
+  <div class="form-group form-check">
+    <%= f.check_box :show_status, class: "form-check-input" %>
+    <%= f.label :show_status, class: "form-check-label" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= f.label :view_mode %>
     <%= f.select :view_mode, options_for_select([
       ["Setup", "setup"],
       ["Stage", "stage"],
       ["Info", "info"],
       ["Bar", "bar"]
-    ], display.view_mode) %>
-  </p>
+    ], display.view_mode), {}, class: "form-control" %>
+  </div>
 
-  <p><%= f.submit %></p>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>

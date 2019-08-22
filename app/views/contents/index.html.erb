@@ -1,0 +1,20 @@
+<h1>Content</h1>
+<p><%= link_to "Add Content", new_content_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Content Type</th>
+      <th>URL</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @content.each do |item| %>
+      <tr>
+        <td><%= item.content_type %></td>
+        <td><%= link_to item.url, item.url %></td>
+        <td><%= item.tags %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

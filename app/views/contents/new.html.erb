@@ -1,0 +1,24 @@
+<h1>Add Content</h1>
+<p>Please make sure content isn't going to get us killed for copyright breach.</p>
+
+<%= form_for @content do |f| %>
+  <div class="form-group">
+    <%= f.label :url, "URL" %>
+    <%= f.text_field :url, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content_type %>
+    <%= f.select :content_type, Content.valid_types, {}, class: "form-control" %>
+    <small class="form-text text-muted">TODO: Autodetect based on URL</small>
+  </div>
+  <div class="form-group">
+    <%= f.label :contributed_by %>
+    <%= f.text_field :contributed_by, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tags %>
+    <%= f.text_field :tags, class: "form-control" %>
+    <small class="form-text text-muted">Comma separated</small>
+  </div>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
