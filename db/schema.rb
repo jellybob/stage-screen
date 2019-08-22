@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_103709) do
+ActiveRecord::Schema.define(version: 2019_08_22_112127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_103709) do
     t.boolean "connected", default: false
     t.string "view_mode", default: "setup"
     t.boolean "show_status", default: true
+    t.string "location"
   end
 
 end

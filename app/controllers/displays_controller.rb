@@ -22,6 +22,6 @@ class DisplaysController < ApplicationController
   private
 
   def display_params
-    params.require(:display).permit(:name, :show_status, :view_mode)
+    params.require(:display).permit(:name, :show_status, :view_mode, :location)
   end
 end
