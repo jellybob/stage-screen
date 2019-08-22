@@ -1,4 +1,5 @@
 import React from 'react';
+import ContentContainer from 'screens/content_container';
 
 class TopBar extends React.Component {
   render() { return <div className="top-bar" /> }
@@ -6,10 +7,6 @@ class TopBar extends React.Component {
 
 class MessagesBar extends React.Component {
   render() { return <div className="bottom-bar" /> }
-}
-
-class ContentContainer extends React.Component {
-  render() { return <div className="content" /> }
 }
 
 class StageScreen extends React.Component {
