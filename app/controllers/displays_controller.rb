@@ -14,7 +14,7 @@ class DisplaysController < ApplicationController
     @display.attributes = display_params
     @display.save!
 
-    redirect_to display
+    redirect_to @display
   rescue ActiveRecord::RecordInvalid
     render :edit
   end
