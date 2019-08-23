@@ -3,11 +3,16 @@ import YouTube from 'react-youtube';
 
 class ImageContainer extends React.Component {
   componentDidMount() {
-    this.completionTimer = setTimeout(this.props.onComplete, 2500);
+    // This needs to be an interval. It was originally using setTimeout,
+    // which seems cleaner, but didn't work if more than one image was
+    // displayed in a row. In the case of multiple images in a row the
+    // content property is just updated, rather than the component being
+    // remounted.
+    this.completionTimer = setInterval(this.props.onComplete, 2500);
   }
 
   componentWillUnmount() {
-    clearTimeout(this.completionTimer);
+    clearInterval(this.completionTimer);
   }
 
   render() {
@@ -23,12 +28,15 @@ class YouTubeContainer extends React.Component {
       width: window.innerWidth,
       height: window.innerHeight,
       playerVars: {
+        start: 0,
         autoplay: 1,
         controls: 0,
         disablekb: 1, // Disable YouTube keyboard shortcuts
         modestbranding: 1, // Remove YouTube branding
         iv_load_policy: 3, // Don't show annotations
-        fs: 0, // Disable the fullscreen button
+        fs: 0, // Disable the fullscreen button,
+        enablejsapi: 1,
+        origin: document.location.origin,
       },
     }
 
@@ -59,15 +67,17 @@ class ContentContainer extends React.Component {
 
   componentDidMount() {
     this.nextItem();
-    //this.timeout = setInterval(this.nextItem.bind(this), 10000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timeout);
   }
 
   nextItem() {
-    fetch('/content/next').
+    console.log('Loading next content item');
+
+    var itemUrl = '/content/next';
+    if (this.state.content) {
+      itemUrl = `${itemUrl}?previous=${this.state.content.id}`
+    }
+
+    fetch(itemUrl).
       then(response => response.json()).
       then(data => {
         this.setState({ 'content': data });

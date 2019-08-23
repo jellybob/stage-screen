@@ -6,8 +6,10 @@ class ContentsController < ApplicationController
   end
 
   def next
-    @content = Content.order("RANDOM()").first
-    render json: @content
+    @content = Content.order("RANDOM()")
+    @content = @content.where("id != ?", params[:previous]) if params[:previous]
+
+    render json: @content.first
   end
 
   def new
