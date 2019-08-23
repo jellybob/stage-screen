@@ -12,12 +12,12 @@ class ContentsController < ApplicationController
     render json: @content.first
   end
 
-  def new
-    @content = Content.new
-  end
-
   def show
     @content = Content.find(params[:id])
+  end
+
+  def new
+    @content = Content.new
   end
 
   def create
@@ -27,6 +27,26 @@ class ContentsController < ApplicationController
     redirect_to contents_path
   rescue ActiveRecord::RecordInvalid
     render :new
+  end
+
+  def edit
+    @content = Content.find(params[:id])
+    render :new
+  end
+
+  def update
+    @content = Content.find(params[:id])
+    @content.attributes = content_params
+    @content.save!
+
+    redirect_to contents_path
+  rescue ActiveRecord::RecordInvalid
+    render :edit
+  end
+
+  def destroy
+    Content.where(id: params[:id]).destroy_all
+    redirect_to contents_path
   end
 
   private

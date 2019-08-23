@@ -46,7 +46,7 @@ stage, but it'll do for now.
 * [ ] Info desk view - schedule, village information, assorted notices
 * [ ] Stage view - know which stage a display is in, and show information
       about what's happening there
-* [ ] Content tagging
+* [x] Content tagging
 * [ ] Limit specific displays to a list of tagged content
 * [ ] Timed content (do not display after/before specific times)
 * [ ] Random view - NOC stats, etc

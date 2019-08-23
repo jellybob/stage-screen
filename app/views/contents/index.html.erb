@@ -6,6 +6,7 @@
       <th>Content Type</th>
       <th>URL</th>
       <th>Tags</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
         <td><%= item.content_type %></td>
         <td><%= link_to item.url, item.url %></td>
         <td><%= item.tags %></td>
+        <td><%= link_to "Edit", [:edit, item] %> | <%= link_to "Delete", content_path(item), method: :delete %>
       </tr>
     <% end %>
   </tbody>

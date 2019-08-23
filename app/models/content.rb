@@ -10,4 +10,10 @@ class Content < ApplicationRecord
   def self.valid_types
     VALID_TYPES
   end
+
+  def tags=(new_tags)
+    new_tags = new_tags.split(",").map(&:strip) if new_tags.is_a?(String)
+
+    self[:tags] = new_tags
+  end
 end
