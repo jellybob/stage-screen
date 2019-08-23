@@ -28,3 +28,24 @@ stage, but it'll do for now.
 * *Image:* Drop in a URL for an image. Nothing more to it.
 * *YouTube:* On a YouTube video click the Share button, and copy the URL provided.
 * *Video:* Not implemented yet.
+
+# TODO
+
+* [ ] Make it pretty! Branding etc.
+* [x] Self-registration of displays
+* [x] Websocket based control of displays
+* [x] Play YouTube videos
+* [x] Display images
+* [ ] Play arbitrary videos from the internet
+* [ ] Display messages/notices from a pool
+* [ ] Display messages/notices on demand
+* [ ] Now/next view
+* [ ] Schedule view (needs working out how to do it)
+* [ ] Bar view - current stock, prices, etc
+* [ ] Info desk view - schedule, village information, assorted notices
+* [ ] Stage view - know which stage a display is in, and show information
+      about what's happening there
+* [ ] Content tagging
+* [ ] Limit specific displays to a list of tagged content
+* [ ] Timed content (do not display after/before specific times)
+* [ ] Random view - NOC stats, etc
