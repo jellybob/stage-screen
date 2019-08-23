@@ -46,9 +46,8 @@ class Root extends React.Component {
 
   componentDidMount() {
     var component = this;
-    this.subscription = consumer.subscriptions.create({ channel: "DisplayChannel" }, {
+    consumer.subscriptions.create({ channel: "DisplayChannel" }, {
       connected() {
-        console.log("Connected to display channel");
         component.setState({ connected: true });
         this.update();
       },
@@ -62,10 +61,18 @@ class Root extends React.Component {
       },
 
       received(data) {
-        console.log("New display details!", JSON.parse(data));
         component.setState({ display: JSON.parse(data) });
       }
     });
+
+    consumer.subscriptions.create({ channel: "UpdateNotifier" }, {
+      received(data) {
+        if (data == "reload") {
+          console.log("Refresh requested, reloading page");
+          document.location.href = document.location.href;
+        }
+      }
+    })
   }
 
   renderContent() {

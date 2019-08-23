@@ -6,6 +6,7 @@ consumer.subscriptions.create({ channel: "DisplayChannel" }, {
   },
 
   received(data) {
+    console.log(data);
     this.display = JSON.parse(data);
     console.log("New display details!", this.display);
   }
