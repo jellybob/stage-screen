@@ -41,6 +41,7 @@ stage, but it'll do for now.
 * [ ] Display messages/notices on demand
 * [ ] Now/next view
 * [ ] Schedule view (needs working out how to do it)
+* [ ] Volunteers view - volunteers needed etc
 * [ ] Bar view - current stock, prices, etc
 * [ ] Info desk view - schedule, village information, assorted notices
 * [ ] Stage view - know which stage a display is in, and show information
