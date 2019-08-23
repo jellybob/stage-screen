@@ -50,3 +50,5 @@ stage, but it'll do for now.
 * [ ] Limit specific displays to a list of tagged content
 * [ ] Timed content (do not display after/before specific times)
 * [ ] Random view - NOC stats, etc
+* [ ] Smoother content transitions - find some way to load content in the
+      background, only displaying it once its been fully loaded.
