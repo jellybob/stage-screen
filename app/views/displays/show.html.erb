@@ -1,5 +1,5 @@
-<h1>Display: <%= display.name %></h1>
-<%= form_for display do |f| %>
+<h1>Display: <%= @display.name %></h1>
+<%= form_for @display do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
@@ -22,7 +22,7 @@
       ["Stage", "stage"],
       ["Info", "info"],
       ["Bar", "bar"]
-    ], display.view_mode), {}, class: "form-control" %>
+    ], @display.view_mode), {}, class: "form-control" %>
   </div>
 
   <%= f.submit class: "btn btn-primary" %>
