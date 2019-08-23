@@ -1,24 +1,30 @@
-# README
+# Stage Screen
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A tool for displaying information and interstitial content at events,
+specifically developed for [Electromagnetic Field](https://emfcamp.org),
+but it would probably work in other places.
 
-Things you may want to cover:
+## Demo
 
-* Ruby version
+To see how it works follow these steps:
 
-* System dependencies
+1. Go to http://infinite-headland-30673.herokuapp.com/ - you'll see a screen
+   telling you a display ID.
 
-* Configuration
+2. In another window, open http://infinite-headland-30673.herokuapp.com/displays,
+   find your display, then give it a name and location. Switch the view mode to "Stage"
+   since the other ones aren't yet implemented.
 
-* Database creation
+Your display window should now be showing the location details you put in, and
+some assorted EMF-y content. This content is selected at random from the pool at
+http://infinite-headland-30673.herokuapp.com/content - feel free to add more.
 
-* Database initialization
+## Supported Content Types
 
-* How to run the test suite
+No content is stored locally, we're just pulling it in from URLs provided. This is
+probably a terrible idea and will need to be fixed to avoid someone Goatse-ing a
+stage, but it'll do for now.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* *Image:* Drop in a URL for an image. Nothing more to it.
+* *YouTube:* On a YouTube video click the Share button, and copy the URL provided.
+* *Video:* Not implemented yet.
