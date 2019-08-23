@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: info_screener_production
-  username: info_screener
-  password: <%= ENV['INFO_SCREENER_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
