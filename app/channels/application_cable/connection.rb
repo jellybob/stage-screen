@@ -18,7 +18,7 @@ module ApplicationCable
       if (display = Display.find_by(display_id: cookies.signed[:display_id]))
         display
       else
-        reject_unauthorised_connection
+        reject_unauthorized_connection
       end
     end
   end
