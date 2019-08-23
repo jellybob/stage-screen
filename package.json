@@ -14,5 +14,8 @@
   },
   "devDependencies": {
     "webpack-dev-server": "^3.8.0"
+  },
+  "scripts": {
+    "postinstall": "echo 'Make Action Cable work' && cp node_modules/@rails/actioncable/app/assets/javascripts/action_cable.js app/javascript"
   }
 }
