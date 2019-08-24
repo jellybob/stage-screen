@@ -10,9 +10,11 @@
     </thead>
     <tbody>
       <% @displays.each do |display| %>
-        <td><%= link_to display.display_id, display %></td>
-        <td><%= link_to display.name, display %></td>
-        <td><%= display.connected %></td>
+        <tr>
+          <td><%= link_to display.display_id, display %></td>
+          <td><%= link_to display.name, display %></td>
+          <td><%= display.connected %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>
