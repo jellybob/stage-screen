@@ -72,7 +72,7 @@ class ContentContainer extends React.Component {
   nextItem() {
     console.log('Loading next content item');
 
-    var itemUrl = '/content/next';
+    var itemUrl = '/content';
     if (this.state.content) {
       itemUrl = `${itemUrl}?previous=${this.state.content.id}`
     }

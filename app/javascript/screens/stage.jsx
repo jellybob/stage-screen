@@ -1,29 +1,19 @@
 import React from 'react';
 import ContentContainer from 'screens/content_container';
 
+import Clock from 'widgets/clock';
+import MessagesBar from 'widgets/messages_bar';
+
 class TopBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { time: this.getCurrentTime() }
-  }
-
-  getCurrentTime() {
-    var now = new Date();
-    return `${now.getHours()}:${now.getMinutes()}`
-  }
-
   render() {
     return (
       <div className="top-bar">
+        <img src="/logo.png" id="logo" />
         <div className="top-bar-location">{this.props.display.location}</div>
-        <div className="top-bar-time">{this.state.time}</div>
+        <Clock className="top-bar-time" />
       </div>
     );
   }
-}
-
-class MessagesBar extends React.Component {
-  render() { return <div className="bottom-bar" /> }
 }
 
 class StageScreen extends React.Component {
@@ -32,7 +22,7 @@ class StageScreen extends React.Component {
       <div>
         <TopBar display={this.props.display} />
         <ContentContainer display={this.props.display} />
-        <MessagesBar display={this.props.display} />
+        <MessagesBar display={this.props.display} className='bottom-bar' />
       </div>
     )
   }

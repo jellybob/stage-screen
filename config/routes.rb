@@ -2,12 +2,8 @@
 
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
-  resources :displays
-  resources :contents, path: "content" do
-    collection do
-      get :next
-    end
-  end
 
+  get "/content", to: "contents#next"
+  get "/message", to: "messages#next"
   root "screen#show"
 end
