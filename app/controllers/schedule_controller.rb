@@ -16,7 +16,7 @@ class ScheduleController < ApplicationController
 
     this_location =
       schedule
-      .filter { |item| item["venue"] == location && item["start_date"] > now }
+      .filter { |item| item["venue"] == location && item["end_date"] > now }
       .sort_by { |item| item["start_date"] }
       .slice(0, 3)
 
