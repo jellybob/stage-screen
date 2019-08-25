@@ -10,6 +10,7 @@ ActiveAdmin.register Content do
       f.input :contributed_by
       f.input :tags, input_html: { value: f.object.tags.join(", ") }
     end
+    f.actions
   end
 
   index do
