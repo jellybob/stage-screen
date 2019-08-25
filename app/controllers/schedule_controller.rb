@@ -2,7 +2,7 @@
 
 class ScheduleController < ApplicationController
   def show
-    now = Time.utc(2018, 9, 2, 0, 0, 0)
+    now = Time.utc(2018, 9, 2, 9, 0, 0)
 
     location = params[:id]
 
