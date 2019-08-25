@@ -11,13 +11,13 @@ To see how it works follow these steps:
 1. Go to http://infinite-headland-30673.herokuapp.com/ - you'll see a screen
    telling you a display ID.
 
-2. In another window, open http://infinite-headland-30673.herokuapp.com/displays,
+2. In another window, open http://infinite-headland-30673.herokuapp.com/admin/displays,
    find your display, then give it a name and location. Switch the view mode to "Stage"
    since the other ones aren't yet implemented.
 
 Your display window should now be showing the location details you put in, and
 some assorted EMF-y content. This content is selected at random from the pool at
-http://infinite-headland-30673.herokuapp.com/content - feel free to add more.
+http://infinite-headland-30673.herokuapp.com/admin/contents - feel free to add more.
 
 ## Supported Content Types
 
@@ -37,7 +37,7 @@ stage, but it'll do for now.
 * [x] Play YouTube videos
 * [x] Display images
 * [ ] Play arbitrary videos from the internet
-* [ ] Display messages/notices from a pool
+* [x] Display messages/notices from a pool
 * [ ] Display messages/notices on demand
 * [ ] Now/next view
 * [ ] Schedule view (needs working out how to do it)

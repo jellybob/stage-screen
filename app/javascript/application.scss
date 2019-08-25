@@ -1,3 +1,7 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
 #setup {
   background-color: #f33;
   color: white;
@@ -34,7 +38,7 @@
 
   .top-bar-location {
     position: absolute;
-    top: 25px;
+    top: 30px;
     right: 25px;
     font-size: 2.2em;
     font-weight: bold;
@@ -42,7 +46,7 @@
 
   .top-bar-time {
     position: absolute;
-    bottom: 25px;
+    bottom: 30px;
     right: 25px;
     font-size: 3em;
     font-weight: bold;
@@ -62,6 +66,10 @@
 
   &.hidden {
     bottom: -1000px;
+  }
+
+  h1 {
+    font-weight: bold;
   }
 }
 
