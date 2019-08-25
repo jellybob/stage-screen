@@ -20,6 +20,21 @@ class ImageContainer extends React.Component {
   }
 }
 
+class VideoContainer extends React.Component {
+  render() {
+    return (
+      <video
+        src={this.props.content.url}
+        autoPlay="autoPlay"
+        muted="muted"
+        preload="auto"
+        onEnded={this.props.onComplete}
+        width="100%"
+        height="100%" />
+    );
+  }
+}
+
 class YouTubeContainer extends React.Component {
   render() {
     var videoUrl = this.props.content.url.split('/');
@@ -55,6 +70,7 @@ class YouTubeContainer extends React.Component {
 var contentComponents = {
   'image': ImageContainer,
   'youtube': YouTubeContainer,
+  'video': VideoContainer,
 };
 
 class ContentContainer extends React.Component {
