@@ -3,6 +3,7 @@ import React from 'react';
 class MessagesBar extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       message: null,
       visible: false,
@@ -10,31 +11,28 @@ class MessagesBar extends React.Component {
   }
 
   componentDidMount() {
-    this.next();
+    this.loadMessage();
   }
 
   componentWillUnmount() {
-    clearTimeout(this.timeout);
+    if (this.timeout !== null) {
+      clearTimeout(this.timeout);
+    }
   }
 
-  next() {
+  loadMessage() {
     var messageUrl = '/message';
     fetch('/message').
       then(response => response.json()).
       then(data => {
-        this.setState({ 'message': data });
-        this.timeout = setTimeout(this.display.bind(this), 30000);
+        this.setState({ 'message': data, 'visible': true });
+        this.timeout = setTimeout(this.hide.bind(this), 45000);
       });
   }
 
   hide() {
-    this.timeout = setTimeout(this.next.bind(this), 10000);
+    this.timeout = setTimeout(this.props.onComplete, 10000);
     this.setState({ visible: false });
-  }
-
-  display() {
-    this.timeout = setTimeout(this.hide.bind(this), 45000);
-    this.setState({ visible: true });
   }
 
   render() {
