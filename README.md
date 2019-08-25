@@ -32,6 +32,7 @@ stage, but it'll do for now.
 
 # TODO
 
+* [ ] Remove the code in ScheduleController#show with a hardcoded time
 * [ ] Make it pretty! Branding etc.
 * [x] Self-registration of displays
 * [x] Websocket based control of displays
@@ -40,7 +41,7 @@ stage, but it'll do for now.
 * [x] Play arbitrary videos from the internet
 * [x] Display messages/notices from a pool
 * [ ] Display messages/notices on demand
-* [ ] Now/next view
+* [x] Now/next view
 * [ ] Schedule view (needs working out how to do it)
 * [ ] Volunteers view - volunteers needed etc
 * [ ] Bar view - current stock, prices, etc
