@@ -2,6 +2,7 @@ import React from 'react';
 import ContentContainer from 'screens/content_container';
 
 import Clock from 'widgets/clock';
+import InfoBar from 'widgets/info_bar'
 import MessagesBar from 'widgets/messages_bar';
 import NowNextBar from 'widgets/now_next_bar';
 
@@ -17,39 +18,19 @@ class TopBar extends React.Component {
   }
 }
 
-var stageWidgets = [
-  NowNextBar,
-  MessagesBar,
-];
-
 class StageScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      currentWidget: 0
-    };
-  }
-
-  rotate() {
-    console.log("Done, next widget please");
-    var nextWidget = this.state.currentWidget + 1;
-    if (nextWidget == stageWidgets.length) {
-      nextWidget = 0;
-    }
-
-    this.setState({ currentWidget: nextWidget });
+    this.widgets = [NowNextBar, MessagesBar];
   }
 
   render() {
-    var BottomWidget = stageWidgets[this.state.currentWidget];
-    console.log(BottomWidget)
-
     return (
       <div>
         <TopBar display={this.props.display} />
         <ContentContainer display={this.props.display} />
-        <BottomWidget display={this.props.display} className='bottom-bar' onComplete={this.rotate.bind(this)} />
+        <InfoBar widgets={this.widgets} display={this.props.display} />
       </div>
     )
   }

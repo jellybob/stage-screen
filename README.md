@@ -46,7 +46,7 @@ stage, but it'll do for now.
 * [ ] Volunteers view - volunteers needed etc
 * [ ] Bar view - current stock, prices, etc
 * [ ] Info desk view - schedule, village information, assorted notices
-* [ ] Stage view - know which stage a display is in, and show information
+* [x] Stage view - know which stage a display is in, and show information
       about what's happening there
 * [x] Content tagging
 * [ ] Limit specific displays to a list of tagged content

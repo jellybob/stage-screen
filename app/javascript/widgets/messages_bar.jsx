@@ -4,20 +4,11 @@ class MessagesBar extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      message: null,
-      visible: false,
-    }
+    this.state = { message: null }
   }
 
   componentDidMount() {
     this.loadMessage();
-  }
-
-  componentWillUnmount() {
-    if (this.timeout !== null) {
-      clearTimeout(this.timeout);
-    }
   }
 
   loadMessage() {
@@ -25,14 +16,9 @@ class MessagesBar extends React.Component {
     fetch('/message').
       then(response => response.json()).
       then(data => {
-        this.setState({ 'message': data, 'visible': true });
-        this.timeout = setTimeout(this.hide.bind(this), 45000);
+        this.setState({ 'message': data });
+        this.props.onReady();
       });
-  }
-
-  hide() {
-    this.timeout = setTimeout(this.props.onComplete, 10000);
-    this.setState({ visible: false });
   }
 
   render() {
@@ -41,16 +27,11 @@ class MessagesBar extends React.Component {
       return null;
     }
 
-    var classes = [this.props.className];
-    if (!this.state.visible) {
-      classes.push('hidden');
-    }
-
     return (
-      <div className={ classes.join(' ') }>
+      <React.Fragment>
         <h1>{ message.headline }</h1>
         <p>{ message.body }</p>
-      </div>
+      </React.Fragment>
     );
   }
 }
