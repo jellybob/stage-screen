@@ -1,0 +1,128 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  Exclude:
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+
+Layout/AlignArguments:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+Style/CollectionMethods:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+  - "db/schema.rb"
+
+Style/Encoding:
+  Enabled: true
+  Exclude:
+  - "db/schema.rb"
+
+Layout/ExtraSpacing:
+  Exclude:
+  - "db/schema.rb"
+
+Naming/FileName:
+  ExpectMatchingDefinition: true
+  Exclude:
+  - 'bin/**/*'
+  - 'spec/**/*_spec.rb'
+  - 'spec/support/**/*.rb'
+  - 'spec/*_helper.rb'
+  - 'spec/factories/**/*.rb'
+  - 'config/**/*.rb'
+  - 'config.ru'
+  - 'db/migrate/*.rb'
+  - 'db/schema.rb'
+  - 'db/seeds.rb'
+
+Naming/UncommunicativeMethodParamName:
+  AllowedNames:
+    - io
+    - id
+    - to
+    - by
+    - on
+    - in
+    - at
+    - ip
+    - db
+    - t     # Time
+    - ev    # Event
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+
+Style/NumericLiterals:
+  Exclude:
+  - "db/schema.rb"
+
+Style/PercentQLiterals:
+  EnforcedStyle: upper_case_q
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/WordArray:
+  Exclude:
+  - "db/schema.rb"
+
+Metrics/AbcSize:
+  Exclude:
+  - 'db/migrate/*.rb'
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+  - 'db/schema.rb'
+  - 'db/migrate/*.rb'
+  - 'bin/*'
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+  - 'db/migrate/*.rb'
+  - 'spec/**/*_spec.rb'
+
+Metrics/ClassLength:
+  Max: 200
+  Exclude:
+  - 'db/migrate/*.rb'
+
+Metrics/BlockLength:
+  Exclude:
+  - 'db/schema.rb'
+  - 'spec/**/*_spec.rb'
+
+Layout/EmptyLineAfterMagicComment:
+  Exclude:
+  - 'db/schema.rb'
