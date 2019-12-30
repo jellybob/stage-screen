@@ -1,0 +1,19 @@
+.view-stage {
+  background-color: red;
+
+  .news-item {
+    h1 {
+      margin: 0;
+      font-size: 50px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+

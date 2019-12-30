@@ -8,5 +8,11 @@ class NewsItem < ApplicationRecord
   }
   scope :visible, -> { approved.within_date_range }
 
+  after_save :broadcast
+
   rails_admin
+
+  def broadcast
+    ActionCable.server.broadcast("news", "new news")
+  end
 end

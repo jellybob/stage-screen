@@ -1,0 +1,14 @@
+@import-normalize;
+
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  background-color: green;
+  color: white;
+  font-size: 40px;
+}
+
+.view {
+  width: 100vw;
+  height: 100vh;
+}

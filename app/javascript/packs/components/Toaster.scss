@@ -1,0 +1,54 @@
+.toaster-item {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100vw;
+  position: absolute;
+  padding: 20px;
+
+  &.enter-active, &.enter-done {
+    transition-delay: 1s;
+  }
+}
+
+.toaster-item-top {
+  &.enter {
+    transform: translateY(-100%);
+  }
+
+  &.enter-active, &.enter-done {
+    transform: translateY(0%);
+    transition: transform 1s;
+    transition-delay: 1s;
+  }
+
+  &.exit {
+    transform: translateY(0%);
+  }
+
+  &.exit-active {
+    transition: transform 1s;
+    transform: translateY(-100%);
+  }
+}
+
+.toaster-item-bottom {
+  bottom: 0;
+
+  &.enter {
+    transform: translateY(100%);
+  }
+
+  &.enter-active, &.enter-done {
+    transform: translateY(0%);
+    transition: transform 1s;
+    transition-delay: 1s;
+  }
+
+  &.exit {
+    transform: translateY(0%);
+  }
+
+  &.exit-active {
+    transition: transform 1s;
+    transform: translateY(100%);
+  }
+}
