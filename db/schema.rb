@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_173209) do
+ActiveRecord::Schema.define(version: 2019_12_31_130425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "external_id"
+    t.string "source"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.string "cost"
+    t.string "equipment"
+    t.string "slug"
+    t.string "venue"
+    t.string "title"
+    t.text "description"
+    t.string "type"
+    t.string "link"
+    t.string "map_link"
+    t.string "speaker"
+    t.string "age_range"
+    t.string "latitude"
+    t.string "longitude"
+    t.json "source_document"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ends_at"], name: "index_events_on_ends_at"
+    t.index ["external_id"], name: "index_events_on_external_id", unique: true
+    t.index ["starts_at"], name: "index_events_on_starts_at"
+    t.index ["venue"], name: "index_events_on_venue"
+  end
 
   create_table "news_items", force: :cascade do |t|
     t.string "headline"
