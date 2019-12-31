@@ -9,6 +9,8 @@ class ScheduleImport < ActiveJob::Base
       import_event(event)
     end
 
+    ActionCable.server.broadcast("schedule", "updated")
+
     true
   end
 
