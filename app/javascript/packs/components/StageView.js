@@ -43,7 +43,9 @@ function StageView() {
     return (
       <div key={idx} className="news-item">
         <h1>{item.headline}</h1>
-        <p>{item.body}</p>
+        { item.body &&
+          <p>{item.body}</p>
+        }
       </div>
     );
   }
