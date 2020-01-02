@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import StageView from './StageView.js';
+import SetupView from './SetupView.js';
 import socket from '../websocket.js';
 
 function App() {
@@ -7,11 +8,12 @@ function App() {
     "id": "unknown",
     "name": "unknown",
     "location": "unknown",
-    "view": "stage",
+    "view": "setup",
   };
 
   const views = {
     "stage": StageView,
+    "setup": SetupView,
   };
 
   const [config, setConfig] = useState(initialState);
