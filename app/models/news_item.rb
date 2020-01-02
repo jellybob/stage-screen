@@ -13,6 +13,6 @@ class NewsItem < ApplicationRecord
   rails_admin
 
   def broadcast
-    ActionCable.server.broadcast("news", "new news")
+    NewsChannel.broadcast_news_update
   end
 end
