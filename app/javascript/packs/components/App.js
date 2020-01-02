@@ -20,8 +20,22 @@ function App() {
     socket.subscriptions.create({ channel: 'DeviceChannel' }, {
       received(data) {
         let payload = JSON.parse(data);
+
         console.log("Received device update:", payload);
         setConfig(payload);
+      }
+    });
+
+    socket.subscriptions.create({ channel: 'CommandChannel' }, {
+      received(data) {
+        let payload = JSON.parse(data);
+
+        switch(payload.command) {
+          case "reload":
+            console.log("Reloading due to server request");
+            document.location.href = document.location.href;
+            break;
+        }
       }
     });
   }, []);
