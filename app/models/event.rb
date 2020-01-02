@@ -7,4 +7,7 @@ class Event < ApplicationRecord
   scope :today, lambda {
     where("starts_at <= ?", Time.local(2018, 8, 31, 23, 59, 59))
   }
+  scope :in_location, lambda { |location|
+    where(venue: location)
+  }
 end
