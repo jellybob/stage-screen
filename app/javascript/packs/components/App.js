@@ -16,12 +16,28 @@ function App() {
     "setup": SetupView,
   };
 
-  const [config, setConfig] = useState(initialState);
+  const [config, setConfig] = useState(loadConfig());
+
+  // Make sure at least the basics come back in the correct state as soon
+  // as a display is reloaded to stop a brief flash of connecting screen.
+  function persistConfig(data) {
+    localStorage.setItem("config", data)
+  }
+
+  function loadConfig() {
+    let persistedConfig = localStorage.getItem("config");
+    if (persistedConfig === null) {
+      return initialState;
+    } else {
+      return JSON.parse(persistedConfig);
+    }
+  }
 
   useEffect(() => {
     socket.subscriptions.create({ channel: 'DeviceChannel' }, {
       received(data) {
         let payload = JSON.parse(data);
+        persistConfig(data);
 
         console.log("Received device update:", payload);
         setConfig(payload);
