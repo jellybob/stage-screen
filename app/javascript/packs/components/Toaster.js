@@ -10,6 +10,8 @@ function Toaster({ children, downTime = 15000, displayTime = 15000, position = "
   const [currentChild, setCurrentChild] = useState(children[0]);
   const [initialised, setInitialised] = useState(false);
 
+  // On first run we need to run the exited callback to kick off the process of transitioning
+  // between children.
   useEffect(() => {
     if (!initialised && children.length > 0) {
       exited();
@@ -18,17 +20,13 @@ function Toaster({ children, downTime = 15000, displayTime = 15000, position = "
   }, [initialised, children]);
 
   function entered() {
-    console.log("Entered");
     setTimeout(() => {
-      console.log("Callback")
       setCurrentChild(null);
     }, displayTime)
   }
 
   function exited() {
-    console.log("Exited");
     setTimeout(() => {
-      console.log(children);
       let nextChildIndex = childIndex === children.length - 1 ? 0 : childIndex + 1;
       setChildIndex(nextChildIndex);
       setCurrentChild(children[childIndex]);

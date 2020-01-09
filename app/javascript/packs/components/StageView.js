@@ -85,7 +85,7 @@ function StageView(props) {
 
   return (
     <div className="view view-stage">
-      <Toaster position="bottom" displayTime={1000} downTime={5000}>
+      <Toaster position="bottom" displayTime={5000} downTime={5000}>
         {renderItems()}
       </Toaster>
     </div>
