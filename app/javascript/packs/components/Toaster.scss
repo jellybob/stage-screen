@@ -1,12 +1,10 @@
+// If you change the transition times here, you also need to
+// change the TransitionGroup timeouts in Toaster.js
 .toaster-item {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100vw;
   position: absolute;
   padding: 20px;
-
-  &.enter-active, &.enter-done {
-    transition-delay: 1s;
-  }
 }
 
 .toaster-item-top {
@@ -17,7 +15,6 @@
   &.enter-active, &.enter-done {
     transform: translateY(0%);
     transition: transform 1s;
-    transition-delay: 1s;
   }
 
   &.exit {
@@ -40,7 +37,6 @@
   &.enter-active, &.enter-done {
     transform: translateY(0%);
     transition: transform 1s;
-    transition-delay: 1s;
   }
 
   &.exit {

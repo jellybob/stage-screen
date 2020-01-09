@@ -6,35 +6,34 @@ import './Toaster.scss';
 // Gradually progresses through popping any children passed in from the edge of the screen
 // in turn. Animations are handled by CSS.
 function Toaster({ children, downTime = 15000, displayTime = 15000, position = "bottom" }) {
-  const [visible, setVisible] = useState(false);
   const [childIndex, setChildIndex] = useState(0);
-  const [currentChild, setCurrentChild] = useState(null);
+  const [currentChild, setCurrentChild] = useState(children[0]);
+  const [initialised, setInitialised] = useState(false);
 
-  // Move onto either the next child and make it visible, so it pops into view, or
-  // make the child invisible and nullify it so it pops out of view.
-  const progress = useCallback(() => {
-    if (visible) {
-      setVisible(false);
-      let nextChildIndex = childIndex === children.length - 1 ? 0 : childIndex + 1;
-
-      setChildIndex(nextChildIndex);
-      setCurrentChild(null);
-    } else {
-      setVisible(true);
-      setCurrentChild(children[childIndex]);
-    }
-  }, [childIndex, visible, children]);
-
-  // Set a timer to call progress at the appropriate moment.
-  //
-  // Logic seems a bit backwards here, as when the toaster is visible we need
-  // to make the next call after downTime because its about to progress to
-  // being invisible, and when it isn't visible we progress after displayTime
-  // because its about to become visible.
   useEffect(() => {
-    let timeout = setTimeout(progress, visible ? downTime : displayTime);
-    return () => clearTimeout(timeout);
-  }, [progress, visible, downTime, displayTime]);
+    if (!initialised && children.length > 0) {
+      exited();
+      setInitialised(true);
+    }
+  }, [initialised, children]);
+
+  function entered() {
+    console.log("Entered");
+    setTimeout(() => {
+      console.log("Callback")
+      setCurrentChild(null);
+    }, displayTime)
+  }
+
+  function exited() {
+    console.log("Exited");
+    setTimeout(() => {
+      console.log(children);
+      let nextChildIndex = childIndex === children.length - 1 ? 0 : childIndex + 1;
+      setChildIndex(nextChildIndex);
+      setCurrentChild(children[childIndex]);
+    }, downTime)
+  }
 
   function renderChild() {
     if (!currentChild) { return null; }
@@ -46,7 +45,7 @@ function Toaster({ children, downTime = 15000, displayTime = 15000, position = "
     ].join(" ")
 
     return (
-      <CSSTransition key={childIndex} timeout={{ enter: displayTime, exit: downTime }} className={className}>
+      <CSSTransition key={childIndex} timeout={{ enter: 1000, exit: 1000 }} onEntered={entered} onExited={exited} className={className}>
         { currentChild }
       </CSSTransition>
     );
